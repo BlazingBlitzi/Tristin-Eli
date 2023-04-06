@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float playerSpeed;
+    /*public float playerSpeed;
 
     private Rigidbody2D rb;
     private Vector2 leftStickInput;
@@ -42,5 +42,5 @@ public class PlayerController : MonoBehaviour
 
             rb.SetRotation(playerRotation);
         }
-    }
+    }*/
 }
