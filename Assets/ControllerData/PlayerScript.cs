@@ -9,23 +9,35 @@ public class PlayerScript : MonoBehaviour
     InputActionMap inputMap;
     InputAction move;
     InputAction look;
+    InputAction shoot;
 
     Vector2 movement;
     Vector3 lookAround;
+
+    public Rigidbody2D Laser;
+    public Transform playerFront;
 
     // Start is called before the first frame update
     private void Awake()
     {
         inputAsset = this.GetComponent<PlayerInput>().actions;
         inputMap = inputAsset.FindActionMap("PlayerActionMap");
+
         move = inputMap.FindAction("Move");
         look = inputMap.FindAction("Look");
+        shoot = inputMap.FindAction("Shoot");
 
         move.performed += contx => movement = contx.ReadValue<Vector2>();
         move.canceled += contx => movement = Vector2.zero;
 
         look.performed += contx => lookAround = contx.ReadValue<Vector2>();
         look.canceled += contx => lookAround = Vector2.zero;
+
+        shoot.performed += contx => ShootGun();
+    }
+    public void ShootGun()
+    {
+        Instantiate(Laser, playerFront.position, Quaternion.identity);
     }
 
     private void FixedUpdate()
@@ -35,6 +47,8 @@ public class PlayerScript : MonoBehaviour
 
         Vector2 lookAroundVelocity = new Vector2(-lookAround.y, lookAround.x) * 5f * Time.deltaTime;
         transform.Rotate(lookAroundVelocity, Space.Self);
+
+        
     }
 
     // Update is called once per frame
