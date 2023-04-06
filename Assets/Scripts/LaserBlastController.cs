@@ -11,6 +11,9 @@ public class LaserBlastController : MonoBehaviour
     private void Start()
     {
         moveVector = Vector3.up * speed * Time.fixedDeltaTime;
+
+        Destroy(gameObject, 3.5f);
+        //Destroys this gameObject after 3.5 seconds (optimization)
     }
 
     private void FixedUpdate()
