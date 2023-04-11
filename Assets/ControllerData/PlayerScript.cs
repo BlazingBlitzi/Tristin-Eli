@@ -19,9 +19,6 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D Bullet;
     public Transform playerFront;
 
-    private Vector2 movementInput;
-    private Vector2 smoothedMovementInput;
-    private Vector2 movementInputSmoothVelocity;
     [SerializeField]
     private float speed;
 
@@ -42,10 +39,7 @@ public class PlayerScript : MonoBehaviour
 
         rotate.performed += ctx => rotation = ctx.ReadValue<Vector2>();
         rotate.canceled += ctx => rotation = Vector2.zero;*/
-
-  
     }
-
     private void FixedUpdate()
     {
         //SetPlayerVelocity();
@@ -63,14 +57,6 @@ public class PlayerScript : MonoBehaviour
     {
         Instantiate(Bullet, playerFront.position, Quaternion.identity);
     }
-    public void SetPlayerVelocity(InputAction.CallbackContext ctx)
-    {
-        movementInput = ctx.ReadValue<Vector2>();
-        smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
-
-        rb2d.velocity = smoothedMovementInput * speed;
-    }
-
     public void RotateInDirectionOfInput(InputAction.CallbackContext ctx)
     {
         lookDirection = ctx.ReadValue<Vector2>();
@@ -83,23 +69,9 @@ public class PlayerScript : MonoBehaviour
         rb2d.AddForce(lookDirection * airPuff, ForceMode2D.Impulse);
     }
 
-    public void StopMoving(InputAction.CallbackContext ctx)
+    public void Update()
     {
-        rb2d.velocity = Vector2.zero;
         
     }
 
-    private void OnMove(InputValue inputValue)
-    {
-        movementInput = inputValue.Get<Vector2>();
-    }
-    /*private void OnEnable()
-    {
-        inputMap.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputMap.Disable();
-    }*/
 }

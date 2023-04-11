@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7979424168237073975, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7979424168237073976, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
       value: 1
