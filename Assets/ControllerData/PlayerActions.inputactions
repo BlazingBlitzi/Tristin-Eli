@@ -24,9 +24,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "AirPuff",
                     "type": "Button",
                     "id": "fc442ec0-75bc-47a5-aa44-7038b735c995",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "64f9313c-9b1a-4580-9ef1-7577e30d674e",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -59,6 +68,17 @@
                 {
                     "name": "",
                     "id": "c91b47ce-585c-462e-9990-454559ad4194",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AirPuff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33084920-b01a-4068-b64d-6b4c84d40116",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",

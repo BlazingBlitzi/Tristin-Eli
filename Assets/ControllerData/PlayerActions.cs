@@ -46,9 +46,18 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""AirPuff"",
                     ""type"": ""Button"",
                     ""id"": ""fc442ec0-75bc-47a5-aa44-7038b735c995"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""64f9313c-9b1a-4580-9ef1-7577e30d674e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -81,6 +90,17 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c91b47ce-585c-462e-9990-454559ad4194"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AirPuff"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33084920-b01a-4068-b64d-6b4c84d40116"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -98,6 +118,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_PlayerActionMap = asset.FindActionMap("PlayerActionMap", throwIfNotFound: true);
         m_PlayerActionMap_Move = m_PlayerActionMap.FindAction("Move", throwIfNotFound: true);
         m_PlayerActionMap_Look = m_PlayerActionMap.FindAction("Look", throwIfNotFound: true);
+        m_PlayerActionMap_AirPuff = m_PlayerActionMap.FindAction("AirPuff", throwIfNotFound: true);
         m_PlayerActionMap_Shoot = m_PlayerActionMap.FindAction("Shoot", throwIfNotFound: true);
     }
 
@@ -160,6 +181,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private IPlayerActionMapActions m_PlayerActionMapActionsCallbackInterface;
     private readonly InputAction m_PlayerActionMap_Move;
     private readonly InputAction m_PlayerActionMap_Look;
+    private readonly InputAction m_PlayerActionMap_AirPuff;
     private readonly InputAction m_PlayerActionMap_Shoot;
     public struct PlayerActionMapActions
     {
@@ -167,6 +189,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public PlayerActionMapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerActionMap_Move;
         public InputAction @Look => m_Wrapper.m_PlayerActionMap_Look;
+        public InputAction @AirPuff => m_Wrapper.m_PlayerActionMap_AirPuff;
         public InputAction @Shoot => m_Wrapper.m_PlayerActionMap_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
@@ -183,6 +206,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnLook;
+                @AirPuff.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAirPuff;
+                @AirPuff.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAirPuff;
+                @AirPuff.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnAirPuff;
                 @Shoot.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnShoot;
@@ -196,6 +222,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
+                @AirPuff.started += instance.OnAirPuff;
+                @AirPuff.performed += instance.OnAirPuff;
+                @AirPuff.canceled += instance.OnAirPuff;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
@@ -207,6 +236,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnAirPuff(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
     }
 }
