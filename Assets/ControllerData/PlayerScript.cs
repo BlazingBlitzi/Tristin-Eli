@@ -16,11 +16,11 @@ public class PlayerScript : MonoBehaviour
     private Vector2 lookDirection;
 
     Rigidbody2D rb2d;
-    private Vector2 movementInput;
+    /*private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
     [SerializeField]
-    private float speed;
+    private float speed;*/
 
     [SerializeField]
     private float rotationSpeed;
@@ -55,13 +55,13 @@ public class PlayerScript : MonoBehaviour
         rb2d.MoveRotation(rotateTowards);*/
     }
 
-    public void SetPlayerVelocity(InputAction.CallbackContext ctx)
+    /*public void SetPlayerVelocity(InputAction.CallbackContext ctx)
     {
         movementInput = ctx.ReadValue<Vector2>();
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
 
         rb2d.velocity = smoothedMovementInput * speed;
-    }
+    }*/
 
     public void RotateInDirectionOfInput(InputAction.CallbackContext ctx)
     {
@@ -80,10 +80,10 @@ public class PlayerScript : MonoBehaviour
         rb2d.velocity = Vector2.zero;
     }
 
-    private void OnMove(InputValue inputValue)
+    /*private void OnMove(InputValue inputValue)
     {
         movementInput = inputValue.Get<Vector2>();
-    }
+    }*/
     /*private void OnEnable()
     {
         inputMap.Enable();
