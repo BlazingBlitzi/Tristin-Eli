@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     private float airPuff;
 
     public Vector2 lookDirection;
+    public Vector2 lastLookDirection;
 
     Rigidbody2D rb2d;
     public Rigidbody2D Bullet;
@@ -60,8 +61,12 @@ public class PlayerScript : MonoBehaviour
     public void RotateInDirectionOfInput(InputAction.CallbackContext ctx)
     {
         lookDirection = ctx.ReadValue<Vector2>();
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (lookDirection != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        
     }
 
     public void UseAirPuff(InputAction.CallbackContext ctx)
@@ -71,7 +76,7 @@ public class PlayerScript : MonoBehaviour
 
     public void Update()
     {
-        
+          
     }
 
 }
