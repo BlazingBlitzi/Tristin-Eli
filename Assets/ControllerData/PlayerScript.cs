@@ -13,9 +13,12 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private float airPuff;
 
-    private Vector2 lookDirection;
+    public Vector2 lookDirection;
 
     Rigidbody2D rb2d;
+    public Rigidbody2D Bullet;
+    public Transform playerFront;
+
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
@@ -39,6 +42,8 @@ public class PlayerScript : MonoBehaviour
 
         rotate.performed += ctx => rotation = ctx.ReadValue<Vector2>();
         rotate.canceled += ctx => rotation = Vector2.zero;*/
+
+  
     }
 
     private void FixedUpdate()
@@ -54,7 +59,10 @@ public class PlayerScript : MonoBehaviour
         Quaternion rotateTowards = Quaternion.RotateTowards(transform.rotation, targetRotation, 1f * Time.deltaTime);
         rb2d.MoveRotation(rotateTowards);*/
     }
-
+    public void Shoot(InputAction.CallbackContext ctx)
+    {
+        Instantiate(Bullet, playerFront.position, Quaternion.identity);
+    }
     public void SetPlayerVelocity(InputAction.CallbackContext ctx)
     {
         movementInput = ctx.ReadValue<Vector2>();
@@ -72,12 +80,13 @@ public class PlayerScript : MonoBehaviour
 
     public void UseAirPuff(InputAction.CallbackContext ctx)
     {
-        rb2d.AddForce(-lookDirection * airPuff, ForceMode2D.Impulse);
+        rb2d.AddForce(lookDirection * airPuff, ForceMode2D.Impulse);
     }
 
     public void StopMoving(InputAction.CallbackContext ctx)
     {
         rb2d.velocity = Vector2.zero;
+        
     }
 
     private void OnMove(InputValue inputValue)
