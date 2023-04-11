@@ -17,7 +17,7 @@ public class PlayerScript : MonoBehaviour
     public Vector2 lastLookDirection;
 
     Rigidbody2D rb2d;
-    public Rigidbody2D Bullet;
+    public GameObject BulletPrefab;
     public Transform playerFront;
 
     [SerializeField]
@@ -56,7 +56,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        Instantiate(Bullet, playerFront.position, Quaternion.identity);
+        Instantiate(BulletPrefab, playerFront.position, Quaternion.identity);
     }
     public void RotateInDirectionOfInput(InputAction.CallbackContext ctx)
     {

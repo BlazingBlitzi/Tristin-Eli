@@ -18,10 +18,6 @@ public class LaserBlastController : MonoBehaviour
 
         Destroy(gameObject, 3.5f);
         //Destroys this gameObject after 3.5 seconds (optimization)
-    }
-
-    private void FixedUpdate()
-    {
-        transform.Translate(moveVector);
+        
     }
 }
