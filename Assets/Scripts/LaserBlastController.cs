@@ -14,7 +14,7 @@ public class LaserBlastController : MonoBehaviour
     {
         PS = GameObject.Find("TestPlayer").GetComponent<PlayerScript>();
         bulletRB2D = GetComponent<Rigidbody2D>();
-        bulletRB2D.AddForce(PS.lookDirection, ForceMode2D.Impulse);
+        bulletRB2D.AddForce(PS.lookDirection * 30f, ForceMode2D.Impulse);
 
         Destroy(gameObject, 3.5f);
         //Destroys this gameObject after 3.5 seconds (optimization)
