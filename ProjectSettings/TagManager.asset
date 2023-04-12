@@ -42,6 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bullets
+  - name: MAP
+    uniqueID: 1296308335
+    locked: 0
+  - name: ControlledCharacters/Player, Enemies, Projectiles
+    uniqueID: 1447922239
+    locked: 0
+  - name: Other
     uniqueID: 3454707191
     locked: 0

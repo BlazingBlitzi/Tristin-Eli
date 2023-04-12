@@ -5,10 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    /*InputActionAsset inputAsset;
-    InputActionMap inputMap;
-    InputAction move;
-    InputAction rotate;*/
 
     [SerializeField]
     private float airPuff;
@@ -30,29 +26,11 @@ public class PlayerScript : MonoBehaviour
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        /*inputAsset = this.GetComponent<PlayerInput>().actions;
-        inputMap = inputAsset.FindActionMap("PlayerActionMap");
-        move = inputMap.FindAction("Move");
-        rotate = inputMap.FindAction("Look");
-
-        move.performed += ctx => movement = ctx.ReadValue<Vector2>();
-        move.canceled += ctx => movement = Vector2.zero;
-
-        rotate.performed += ctx => rotation = ctx.ReadValue<Vector2>();
-        rotate.canceled += ctx => rotation = Vector2.zero;*/
+        
     }
     private void FixedUpdate()
     {
-        //SetPlayerVelocity();
-        //RotateInDirectionOfInput();
-        /*Vector2 movementVelocity = new Vector2(movement.x, movement.y) * 5f * Time.deltaTime;
-        //Don't use Translate, use RigidBody's Velocity
-        transform.Translate(movementVelocity, Space.Self);
-
-        Vector2 rotationVelocity = new Vector2(rotation.x, rotation.y);
-        Quaternion targetRotation = Quaternion.LookRotation(transform.forward, rotationVelocity);
-        Quaternion rotateTowards = Quaternion.RotateTowards(transform.rotation, targetRotation, 1f * Time.deltaTime);
-        rb2d.MoveRotation(rotateTowards);*/
+        
     }
     public void Shoot(InputAction.CallbackContext ctx)
     {
