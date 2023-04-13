@@ -10208,7 +10208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a3b1e06185159418eeaca1e4b95e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 2122545171}
+  playerTransform: {fileID: 7979424168237073979, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
 --- !u!81 &1902151598
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10397,17 +10397,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 7979424168237073978, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979424168237073978, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -840260105
+      objectReference: {fileID: 0}
     - target: {fileID: 7979424168237073979, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7979424168237073979, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0019257115
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7979424168237073979, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.059369016
+      value: -51.9
       objectReference: {fileID: 0}
     - target: {fileID: 7979424168237073979, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10443,8 +10451,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
---- !u!4 &2122545171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6210324220563893810, guid: 7bcd650c75d32c145ae8b1d5fe42558f, type: 3}
-  m_PrefabInstance: {fileID: 2000277519}
-  m_PrefabAsset: {fileID: 0}
