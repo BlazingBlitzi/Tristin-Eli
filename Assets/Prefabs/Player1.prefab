@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2785796829599370566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6210324220563893810}
+  m_Layer: 0
+  m_Name: PlayerFront
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6210324220563893810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785796829599370566}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -1.5508585, y: -0.18919037, z: 0.0018530032}
+  m_LocalScale: {x: 2.083333, y: 2.083333, z: 2.0833335}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7979424168393219307}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7979424168237073975
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +46,7 @@ GameObject:
   - component: {fileID: 7979424168237073976}
   - component: {fileID: 7979424168237073977}
   m_Layer: 0
-  m_Name: TestPlayer
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,8 +156,8 @@ MonoBehaviour:
   airPuff: 0.5
   lookDirection: {x: 0, y: 0}
   lastLookDirection: {x: 0, y: 0}
-  BulletPrefab: {fileID: 0}
-  playerFront: {fileID: 0}
+  BulletPrefab: {fileID: 4546657812654062176, guid: fd98712a1d77ad74b8131d1f62660382, type: 3}
+  playerFront: {fileID: 6210324220563893810}
   speed: 0
   rotationSpeed: 10
 --- !u!114 &7979424168237073976
@@ -265,7 +296,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 0.48, y: 0.48, z: 0.48}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 6210324220563893810}
   m_Father: {fileID: 7979424168237073979}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
