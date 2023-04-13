@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     public Vector2 lookDirection;
     public Vector2 lastLookDirection;
 
-    Rigidbody2D rb2d;
+    public Rigidbody2D rb2d;
     public GameObject BulletPrefab;
     public Transform playerFront;
 
