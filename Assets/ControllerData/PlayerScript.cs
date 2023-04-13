@@ -8,8 +8,8 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     private float airPuff;
-    private float ammoCount;
-    private float ROF =0.1f;
+    private float ammoCount =8;
+    private float ROF = 0;
 
     public Vector2 lookDirection;
     public Vector2 lastLookDirection;
@@ -37,12 +37,16 @@ public class PlayerScript : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if (ammoCount > 0f && Time.time > ROF )
+        if (ammoCount > 0f && Time.time > ROF + 0.125f)
         {
             Instantiate(BulletPrefab, playerFront.position, Quaternion.identity);
+            ROF = Time.time;
             --ammoCount;
         }
-        else ReloadingGun();
+        else if (ammoCount <= 0f)
+        {
+            ReloadingGun();
+        }
     }
     public void ReloadingGun()
     {
