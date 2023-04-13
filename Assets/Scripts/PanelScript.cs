@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PanelScript : MonoBehaviour
 {
-    private bool doorClosed = false;
+    private bool doorOpen = false;
     public GameObject Door;
 
     // Start is called before the first frame update
@@ -20,17 +20,20 @@ public class PanelScript : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet" && doorClosed == false)
+        if (collision.gameObject.tag == "Bullet" && doorOpen == false)
         {
             print("hit");
             Door.SetActive(true);
-            doorClosed = true;
+            doorOpen= true;
         }
-        else if (collision.gameObject.tag == "Bullet" && doorClosed == true)
+        else
         {
-            print("hit");
             Door.SetActive(false);
-            doorClosed= false;
+            doorOpen = false;
+        }
+        if (collision.gameObject.tag == "Bullet" && doorOpen == true)
+        {
+            
         }
     }
 }

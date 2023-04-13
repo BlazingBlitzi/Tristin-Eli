@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb2d;
     private PlayerAwarenessController playerAwarenessController;
     private Vector2 targetDirection;
-
+    private float changeDirectionCooldown;
 
     private void Awake()
     {
@@ -32,11 +32,32 @@ public class EnemyController : MonoBehaviour
 
     private void UpdateTargetDirection()
     {
+        HandleRandomDirectionChange();
+        HandlePlayerTargeting();
+
+
+    }
+
+    private void HandleRandomDirectionChange()
+    {
+        changeDirectionCooldown -= Time.deltaTime;
+
+        if (changeDirectionCooldown <= 0)
+        {
+            float angleChange = Random.Range(-90f, 90f);
+            Quaternion rotation = Quaternion.AngleAxis(angleChange, transform.forward);
+            targetDirection = rotation * targetDirection;
+
+            changeDirectionCooldown = Random.Range(1f, 5f);
+        }
+    }
+
+    private void HandlePlayerTargeting()
+    {
         if (playerAwarenessController.AwareOfPlayer)
         {
             targetDirection = playerAwarenessController.DirectionToPlayer;
         }
-        
     }
 
     private void RotateTowardsTarget()
