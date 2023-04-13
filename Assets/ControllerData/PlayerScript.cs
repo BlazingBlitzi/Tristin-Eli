@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private float airPuff;
     private float ammoCount;
+    private float ROF =0.1f;
 
     public Vector2 lookDirection;
     public Vector2 lastLookDirection;
@@ -36,7 +37,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void Shoot(InputAction.CallbackContext ctx)
     {
-        if (ammoCount > 0f)
+        if (ammoCount > 0f && Time.time > ROF )
         {
             Instantiate(BulletPrefab, playerFront.position, Quaternion.identity);
             --ammoCount;
