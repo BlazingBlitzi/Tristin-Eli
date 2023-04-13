@@ -23,15 +23,19 @@ public class FragileWall : MonoBehaviour
     }
     public void Suck()
     {
-        
-        PlayerPos = GameObject.Find("Player1");
         StartCoroutine(SpaceVacuum());
         vacuum = true;
-        Vector3 difAngle = (PlayerPos.transform.position - transform.position);
+       
+        if (vacuum == true)
+        {
+            PlayerPos = GameObject.Find("Player1");
+            Vector3 difAngle = (PlayerPos.transform.position - transform.position);
 
+        }
     }
     IEnumerator SpaceVacuum()
     {
         yield return new WaitForSeconds(3f);
+        vacuum = false;
     }
 }
