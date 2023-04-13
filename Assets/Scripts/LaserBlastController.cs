@@ -11,7 +11,7 @@ public class LaserBlastController : MonoBehaviour
 
     private void Start()
     {
-        PS = GameObject.Find("TestPlayer").GetComponent<PlayerScript>();
+        PS = GameObject.Find("Player1").GetComponent<PlayerScript>();
         bulletRB2D = GetComponent<Rigidbody2D>();
         bulletRB2D.AddForce(PS.lastLookDirection * 30f, ForceMode2D.Impulse);
 
