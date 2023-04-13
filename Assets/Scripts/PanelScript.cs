@@ -23,13 +23,17 @@ public class PanelScript : MonoBehaviour
         if (collision.gameObject.tag == "Bullet" && doorOpen == false)
         {
             print("hit");
-            Door.SetActive(false);
+            Door.SetActive(true);
             doorOpen= true;
+        }
+        else
+        {
+            Door.SetActive(false);
+            doorOpen = false;
         }
         if (collision.gameObject.tag == "Bullet" && doorOpen == true)
         {
-            Door.SetActive(true);
-            doorOpen= false;
+            
         }
     }
 }
