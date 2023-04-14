@@ -1,5 +1,5 @@
 /*****************************************************************************
-// File Name :         LaserBlastController
+// File Name :         PlayerScript
 // Author :            Elijah Vroman
 // Creation Date :     4/5/23
 // Brief Description : This script governs everything about player1, mainly
