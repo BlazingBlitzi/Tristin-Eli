@@ -49,6 +49,7 @@ public class GCScript : MonoBehaviour
     void ColorChanger()
     {
         Color healthMeterColor = Color.Lerp(Color.red, Color.green, (health / maximumHealth));
+        healthMeter.color = healthMeterColor;
     }
 
     void Damage(float damageAmount)
