@@ -12,6 +12,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
+    [SerializeField]
+    public Transform Child;
+
 
     [SerializeField]
     private float airPuff;
@@ -50,7 +53,8 @@ public class PlayerScript : MonoBehaviour
     {
         if (ammoCount > 0f && Time.time > ROF + 0.125f)
         {
-            Instantiate(BulletPrefab, playerFront.position, Quaternion.identity);
+            GameObject newBullet = Instantiate(BulletPrefab, playerFront.position, Quaternion.identity);
+            newBullet.GetComponent<LaserBlastController>().Shoot(lastLookDirection);
             ROF = Time.time;
             --ammoCount;
         }
@@ -90,7 +94,7 @@ public class PlayerScript : MonoBehaviour
         {
             lastLookDirection= lookDirection;
             float angle = Mathf.Atan2(lastLookDirection.y, lastLookDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            Child.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
     /// <summary>

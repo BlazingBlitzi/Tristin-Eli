@@ -63,7 +63,7 @@ public class FragileWall : MonoBehaviour
 
 
             Vector3 difAngle = (PlayerPos.transform.position - transform.position);
-            pS.rb2d.AddForce(difAngle.normalized * -20f * Time.deltaTime, ForceMode2D.Impulse);
+            //pS.rb2d.AddForce(difAngle.normalized * -20f * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
     /// <summary>
