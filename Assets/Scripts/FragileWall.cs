@@ -15,6 +15,7 @@ public class FragileWall : MonoBehaviour
     private GameObject PlayerPos;
     private bool vacuum;
     PlayerScript pS;
+    private GameObject GC;
     GCScript GCS;
     private BoxCollider2D col;
     private SpriteRenderer spr;
@@ -23,7 +24,11 @@ public class FragileWall : MonoBehaviour
     /// This script will be attached to walls with hitboxes. When the bullet
     /// (and later, the player) hits the wall, it will be damaged. 
     /// </summary>
-
+    void Start()
+    {
+        GC = GameObject.FindGameObjectWithTag("GameController");
+        GCS = GC.GetComponent<GCScript>();
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -42,11 +47,15 @@ public class FragileWall : MonoBehaviour
             print("sucking");
             //Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 2)
+        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
         {
             print("HIT");
+            print("Speed:"+collision.relativeVelocity.magnitude);
+  
             GCS.Damage(2f*collision.relativeVelocity.magnitude);
+            
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
+            print("WallDamage" + WallHealth);
         }
     }
     /// <summary>
