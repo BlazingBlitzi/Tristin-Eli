@@ -52,14 +52,14 @@ public class GCScript : MonoBehaviour
         healthMeter.color = healthMeterColor;
     }
 
-    void Damage(float damageAmount)
+    public void Damage(float damageAmount)
     {
         if (health > 0)
         {
             health -= damageAmount;
         }
     }
-    void Heal(float healAmount)
+    public void Heal(float healAmount)
     {
         if (health < maximumHealth)
         {

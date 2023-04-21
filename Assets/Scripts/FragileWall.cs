@@ -15,6 +15,7 @@ public class FragileWall : MonoBehaviour
     private GameObject PlayerPos;
     private bool vacuum;
     PlayerScript pS;
+    GCScript GCS;
     private BoxCollider2D col;
     private SpriteRenderer spr;
 
@@ -40,6 +41,12 @@ public class FragileWall : MonoBehaviour
             Suck();
             print("sucking");
             //Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 2)
+        {
+            print("HIT");
+            GCS.Damage(2f*collision.relativeVelocity.magnitude);
+            WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
     }
     /// <summary>
