@@ -65,12 +65,12 @@ public class FragileWall : MonoBehaviour
     {
         if (vacuum == true)
         {
-            PlayerPos = GameObject.Find("Player1");
+            PlayerPos = GameObject.FindGameObjectWithTag("Player");
             pS = PlayerPos.GetComponent<PlayerScript>();
 
 
             Vector3 difAngle = (PlayerPos.transform.position - transform.position);
-            //pS.rb2d.AddForce(difAngle.normalized * -20f * Time.deltaTime, ForceMode2D.Impulse);
+            pS.rb2d.AddForce(difAngle.normalized * -8f * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
     /// <summary>
@@ -79,7 +79,7 @@ public class FragileWall : MonoBehaviour
     /// </summary>
     IEnumerator SpaceVacuum()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         vacuum = false;
         print("vacuum false");
         Destroy(this);

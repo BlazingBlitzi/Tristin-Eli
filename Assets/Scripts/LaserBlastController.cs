@@ -24,7 +24,7 @@ public class LaserBlastController : MonoBehaviour
             Destroy(this);
         }
 
-        Destroy(gameObject);
+        
     }
 
     
