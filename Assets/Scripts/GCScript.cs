@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System;
+using System.Security.Cryptography;
 
 public class GCScript : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class GCScript : MonoBehaviour
         if (health >= maximumHealth)
         {
             health = maximumHealth;
+        }
+        if (health <= 0)
+        {
+
         }
     }
     /// <summary>

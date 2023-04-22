@@ -21,13 +21,9 @@ public class LaserBlastController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
-
-        
     }
-
-    
 
     public void Shoot(Vector2 dir)
     {

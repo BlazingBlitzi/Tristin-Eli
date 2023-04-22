@@ -44,19 +44,15 @@ public class FragileWall : MonoBehaviour
             spr.enabled = false;
 
             Suck();
-            print("sucking");
             //Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
         {
-            print("HIT");
-            print("Speed:"+collision.relativeVelocity.magnitude);
-  
             GCS.Damage(2f*collision.relativeVelocity.magnitude);
             
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
-            print("WallDamage" + WallHealth);
         }
+        
     }
     /// <summary>
     /// This f(x) is to start the space vacuum coroutine. Not much else. 
@@ -90,7 +86,6 @@ public class FragileWall : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         vacuum = false;
-        print("vacuum false");
         Destroy(this);
     }
 }

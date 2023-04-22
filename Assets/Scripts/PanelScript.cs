@@ -24,7 +24,6 @@ public class PanelScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet" && doorOpen == false)
         {
-            print("hit");
             Door.SetActive(true);
             doorOpen= true;
         }
