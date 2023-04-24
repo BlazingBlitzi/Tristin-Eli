@@ -9,11 +9,12 @@ using System.Security.Cryptography;
 
 public class GCScript : MonoBehaviour
 {
-    public TMP_Text healthText;
+    public TMP_Text healthText1;
     public Image healthMeter;
+    public TMP_Text healthText2;
 
-    float health;
-    float maximumHealth = 100f;
+    int health;
+    int maximumHealth = 100;
     float lerpSpeed;
 
     private void Start()
@@ -23,7 +24,7 @@ public class GCScript : MonoBehaviour
     }
     private void Update()
     {
-        healthText.text = "Health: " + health + "%";
+        healthText1.text = "Health: " + health + "%";
 
         HealthMeterLevel();
         ColorChanger();
@@ -57,19 +58,18 @@ public class GCScript : MonoBehaviour
         healthMeter.color = healthMeterColor;
     }
 
-    public void Damage(float damageAmount)
+    public void Damage(int damageAmount)
     {
         if (health > 0)
         {
             health -= damageAmount;
         }
     }
-    public void Heal(float healAmount)
+    public void Heal(int healAmount)
     {
         if (health < maximumHealth)
         {
             health += healAmount;
         }
     }
-    
 }

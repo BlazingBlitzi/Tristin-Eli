@@ -7451,6 +7451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy2 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5074256110858023578, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7673691622662388687, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
       propertyPath: m_RootOrder
       value: 1
