@@ -48,7 +48,7 @@ public class FragileWall : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
         {
-            GCS.Damage(2f*collision.relativeVelocity.magnitude);
+            GCS.Damage(50);
             
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
