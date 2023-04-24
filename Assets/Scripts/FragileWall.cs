@@ -11,12 +11,12 @@ using UnityEngine;
 
 public class FragileWall : MonoBehaviour
 {
-    private float WallHealth = 10f;
+    public float WallHealth = 10f;
     private GameObject PlayerPos;
     private bool vacuum;
     PlayerScript pS;
     private GameObject GC;
-    GCScript GCS;
+    private GCScript GCS;
     private BoxCollider2D col;
     private SpriteRenderer spr;
 
@@ -27,7 +27,7 @@ public class FragileWall : MonoBehaviour
     void Start()
     {
         GC = GameObject.FindGameObjectWithTag("GameController");
-        GCS = GC.GetComponent<GCScript>();
+        GCS = GetComponent<GCScript>();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -46,10 +46,10 @@ public class FragileWall : MonoBehaviour
             Suck();
             //Destroy(gameObject);
         }
-        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
+        if (collision.gameObject.tag == "Bullet" && collision.relativeVelocity.magnitude >= 1)
         {
             GCS.Damage(2f*collision.relativeVelocity.magnitude);
-            
+            Debug.Log(this);
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
         
