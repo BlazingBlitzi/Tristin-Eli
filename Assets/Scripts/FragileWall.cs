@@ -48,8 +48,7 @@ public class FragileWall : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet" && collision.relativeVelocity.magnitude >= 1)
         {
-            //GCS.Damage -= (2f * collision.relativeVelocity.magnitude);
-            Debug.Log(this);
+            GCS.Damage (30f);
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
         

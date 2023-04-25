@@ -20,8 +20,6 @@ public class PlayerScript : MonoBehaviour
     private float airPuff;
     private float ammoCount = 8;
     private float ROF = 0;
-    private float speed;
-    private float rotationSpeed;
 
     public Vector2 lookDirection;
     public Vector2 lastLookDirection;
