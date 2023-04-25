@@ -11,10 +11,14 @@ public class GCScript : MonoBehaviour
 {
     public TMP_Text healthText1;
     public Image healthMeter;
+
+    public Image healthMeter2;
     public TMP_Text healthText2;
 
-    int health;
-    int maximumHealth = 100;
+    
+
+    float health;
+    float maximumHealth = 100;
     float lerpSpeed;
 
     private void Start()
@@ -58,14 +62,14 @@ public class GCScript : MonoBehaviour
         healthMeter.color = healthMeterColor;
     }
 
-    public void Damage(int damageAmount)
+    public void Damage(float damageAmount)
     {
         if (health > 0)
         {
             health -= damageAmount;
         }
     }
-    public void Heal(int healAmount)
+    public void Heal(float healAmount)
     {
         if (health < maximumHealth)
         {

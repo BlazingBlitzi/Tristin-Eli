@@ -12,15 +12,16 @@ using UnityEngine;
 
 public class LaserBlastController : MonoBehaviour
 {
-    public float speed;
+    public float speed = 30f;
     /// <summary>
     /// If a bullet hits another bullet, they will destroy each other so they
     /// dont bounce around.
     /// </summary>
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" || (collision.gameObject.tag == "Enemy"))
         {
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

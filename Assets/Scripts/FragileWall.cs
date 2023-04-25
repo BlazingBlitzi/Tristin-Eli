@@ -27,7 +27,7 @@ public class FragileWall : MonoBehaviour
     void Start()
     {
         GC = GameObject.FindGameObjectWithTag("GameController");
-        GCS = GetComponent<GCScript>();
+        GCS = GC.GetComponent<GCScript>();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -44,12 +44,11 @@ public class FragileWall : MonoBehaviour
             spr.enabled = false;
 
             Suck();
-            //Destroy(gameObject);
+
         }
-        if (collision.gameObject.tag == "Bullet" && collision.relativeVelocity.magnitude >= 1)
+        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
         {
-            //GCS.Damage -= (2f * collision.relativeVelocity.magnitude);
-            Debug.Log(this);
+            GCS.Damage (30f);
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
         

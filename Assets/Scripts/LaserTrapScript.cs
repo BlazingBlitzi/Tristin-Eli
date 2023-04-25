@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,15 @@ public class LaserTrapScript : MonoBehaviour
     public GameObject warningCircle;
     public GameObject badCircle;
 
+    private GameObject GC;
+    private GCScript GCS;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Laser());
+        GC = GameObject.FindGameObjectWithTag("GameController");
+        GCS = GC.GetComponent<GCScript>();
     }
 
     private IEnumerator Laser()
@@ -32,5 +38,14 @@ public class LaserTrapScript : MonoBehaviour
         badCircle.SetActive(false);
         StartCoroutine(Laser());
     }
-    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+           
+            GCS.Damage(100);
+            Destroy(gameObject);
+        }
+    }
+
 }

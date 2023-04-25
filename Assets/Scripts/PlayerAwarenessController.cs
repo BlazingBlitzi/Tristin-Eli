@@ -27,7 +27,7 @@ public class PlayerAwarenessController : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerScript>().transform;
+        //player = FindObjectOfType<PlayerScript>().transform;
     }
 
     
