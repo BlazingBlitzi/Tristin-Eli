@@ -62,6 +62,33 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Selection"",
+                    ""type"": ""Button"",
+                    ""id"": ""cc42b9ae-9102-47a5-bda6-2fe034a442a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""844becb8-2df9-4a52-acf7-a3986841e830"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""d478dbbc-82bb-4a90-bba9-0e55682cea97"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +135,39 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b49fe6a-eb5a-4ab7-945b-9d5feb633367"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8bab6e6c-d46c-4ae9-890a-48780c8d2c4f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f7bcd90-3759-4014-91a9-fee0431576c2"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +180,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_PlayerActionMap_Look = m_PlayerActionMap.FindAction("Look", throwIfNotFound: true);
         m_PlayerActionMap_AirPuff = m_PlayerActionMap.FindAction("AirPuff", throwIfNotFound: true);
         m_PlayerActionMap_Shoot = m_PlayerActionMap.FindAction("Shoot", throwIfNotFound: true);
+        m_PlayerActionMap_Selection = m_PlayerActionMap.FindAction("Selection", throwIfNotFound: true);
+        m_PlayerActionMap_Cancel = m_PlayerActionMap.FindAction("Cancel", throwIfNotFound: true);
+        m_PlayerActionMap_Start = m_PlayerActionMap.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +246,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_Look;
     private readonly InputAction m_PlayerActionMap_AirPuff;
     private readonly InputAction m_PlayerActionMap_Shoot;
+    private readonly InputAction m_PlayerActionMap_Selection;
+    private readonly InputAction m_PlayerActionMap_Cancel;
+    private readonly InputAction m_PlayerActionMap_Start;
     public struct PlayerActionMapActions
     {
         private @PlayerActions m_Wrapper;
@@ -191,6 +257,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_PlayerActionMap_Look;
         public InputAction @AirPuff => m_Wrapper.m_PlayerActionMap_AirPuff;
         public InputAction @Shoot => m_Wrapper.m_PlayerActionMap_Shoot;
+        public InputAction @Selection => m_Wrapper.m_PlayerActionMap_Selection;
+        public InputAction @Cancel => m_Wrapper.m_PlayerActionMap_Cancel;
+        public InputAction @Start => m_Wrapper.m_PlayerActionMap_Start;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +281,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnShoot;
+                @Selection.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnSelection;
+                @Selection.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnSelection;
+                @Selection.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnSelection;
+                @Cancel.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnCancel;
+                @Start.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_PlayerActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +306,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Selection.started += instance.OnSelection;
+                @Selection.performed += instance.OnSelection;
+                @Selection.canceled += instance.OnSelection;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
             }
         }
     }
@@ -238,5 +325,8 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAirPuff(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnSelection(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }
