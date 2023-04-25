@@ -6,11 +6,14 @@ public class EnemyLaserBehavior : MonoBehaviour
 {
     private GameObject PlayerPos;
     private Rigidbody2D rb;
+    private GameObject GC;
+    private GCScript GCS;
     // Start is called before the first frame update
     void Start()
     {
+        GC = GameObject.FindGameObjectWithTag("GameController");
+        GCS = GC.GetComponent<GCScript>();
         rb = GetComponent<Rigidbody2D>();
-
         PlayerPos = GameObject.FindGameObjectWithTag("Player");
 
 
@@ -26,7 +29,8 @@ public class EnemyLaserBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
+            
+            GCS.Damage(100);
         }
     }
 

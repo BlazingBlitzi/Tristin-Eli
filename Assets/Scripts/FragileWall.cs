@@ -27,7 +27,7 @@ public class FragileWall : MonoBehaviour
     void Start()
     {
         GC = GameObject.FindGameObjectWithTag("GameController");
-        GCS = GetComponent<GCScript>();
+        GCS = GC.GetComponent<GCScript>();
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {

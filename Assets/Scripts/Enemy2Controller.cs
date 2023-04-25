@@ -51,7 +51,6 @@ public class Enemy2Controller : MonoBehaviour
         if (playerRange <= 10 && canShoot == true)
         {
             StartCoroutine(ShootFunction());
-            print("canshoot");
         }
     }
     IEnumerator ShootFunction()
@@ -64,7 +63,6 @@ public class Enemy2Controller : MonoBehaviour
     void Decision()
     {
         int decisionNum = Random.Range(1, 4);
-        print("100 " + decisionNum);
 
         if (decisionNum == 1)
         {
