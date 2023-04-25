@@ -11,7 +11,11 @@ public class GCScript : MonoBehaviour
 {
     public TMP_Text healthText1;
     public Image healthMeter;
+
+    public Image healthMeter2;
     public TMP_Text healthText2;
+
+    
 
     float health;
     float maximumHealth = 100;

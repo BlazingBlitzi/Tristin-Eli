@@ -44,9 +44,9 @@ public class FragileWall : MonoBehaviour
             spr.enabled = false;
 
             Suck();
-            //Destroy(gameObject);
+
         }
-        if (collision.gameObject.tag == "Bullet" && collision.relativeVelocity.magnitude >= 1)
+        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
         {
             GCS.Damage (30f);
             WallHealth -= (2f * collision.relativeVelocity.magnitude);

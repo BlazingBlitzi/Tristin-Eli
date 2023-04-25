@@ -48,7 +48,7 @@ public class Enemy2Controller : MonoBehaviour
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb2d.rotation = angle;
 
-        if (playerRange <= 10 && canShoot == true)
+        if (playerRange <= 7 && canShoot == true)
         {
             StartCoroutine(ShootFunction());
         }

@@ -11,8 +11,7 @@ public class EnemyLaserBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GC = GameObject.FindGameObjectWithTag("GameController");
-        GCS = GC.GetComponent<GCScript>();
+        
         rb = GetComponent<Rigidbody2D>();
         PlayerPos = GameObject.FindGameObjectWithTag("Player");
 
@@ -20,7 +19,7 @@ public class EnemyLaserBehavior : MonoBehaviour
         Vector3 difAngle = (PlayerPos.transform.position - transform.position);
         //Finds difference from players transform and balls transform after ball is spawned
 
-        rb.AddForce(difAngle.normalized * 20f, ForceMode2D.Impulse);
+        rb.AddForce(difAngle.normalized * 18f, ForceMode2D.Impulse);
         //Add force takes destination/endpoint and a magnitude.
 
         Destroy(gameObject, 3f);
@@ -29,8 +28,14 @@ public class EnemyLaserBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            
+            GC = GameObject.FindGameObjectWithTag("GameController");
+            GCS = GC.GetComponent<GCScript>();
             GCS.Damage(100);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
