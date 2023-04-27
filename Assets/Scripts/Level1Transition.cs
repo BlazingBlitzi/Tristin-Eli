@@ -10,6 +10,10 @@ public class Level1Transition : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene(2);
+        if (collision.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(2);
+        }
+        
     }
 }
