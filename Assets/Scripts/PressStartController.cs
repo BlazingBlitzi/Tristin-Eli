@@ -6,7 +6,7 @@ public class PressStartController : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetButtonDown("Start"))
+        if (Input.GetButtonDown("<Gamepad>/start"))
         {
             Debug.Log(this);
             gameObject.SetActive(false);
