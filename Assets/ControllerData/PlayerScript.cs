@@ -42,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     {
         if ((GameObject.Find("Player(Clone)") != null) && GameObject.Find("Player1") == null) 
         {
+            print("shit2");
             gameObject.name = "Player1";
         }
 
