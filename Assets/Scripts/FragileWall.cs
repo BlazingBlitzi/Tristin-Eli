@@ -17,7 +17,7 @@ public class FragileWall : MonoBehaviour
     PlayerScript pS;
     private GameObject GC;
     private GCScript GCS;
-    private PolygonCollider2D col;
+    private Collider2D col;
     private SpriteRenderer spr;
 
     /// <summary>
@@ -38,7 +38,7 @@ public class FragileWall : MonoBehaviour
         }
         if (WallHealth <= 0f)
         {
-            col = gameObject.GetComponent<PolygonCollider2D>();
+            col = gameObject.GetComponent<Collider2D>();
             spr = gameObject.GetComponent<SpriteRenderer>();
             col.enabled = false;
             spr.enabled = false;
@@ -48,7 +48,7 @@ public class FragileWall : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
         {
-            GCS.Damage (30f);
+            GCS.p1Damage (30f);
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
         

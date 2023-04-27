@@ -89,6 +89,15 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ControlsUIMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""4545c042-aa70-4c83-b15f-e8a6bc1e6cae"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bba998e-ee76-4de7-bc4c-0addab3bbe69"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControlsUIMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -183,6 +203,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         m_PlayerActionMap_Selection = m_PlayerActionMap.FindAction("Selection", throwIfNotFound: true);
         m_PlayerActionMap_Cancel = m_PlayerActionMap.FindAction("Cancel", throwIfNotFound: true);
         m_PlayerActionMap_Start = m_PlayerActionMap.FindAction("Start", throwIfNotFound: true);
+        m_PlayerActionMap_ControlsUIMenu = m_PlayerActionMap.FindAction("ControlsUIMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_Selection;
     private readonly InputAction m_PlayerActionMap_Cancel;
     private readonly InputAction m_PlayerActionMap_Start;
+    private readonly InputAction m_PlayerActionMap_ControlsUIMenu;
     public struct PlayerActionMapActions
     {
         private @PlayerActions m_Wrapper;
@@ -260,6 +282,7 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         public InputAction @Selection => m_Wrapper.m_PlayerActionMap_Selection;
         public InputAction @Cancel => m_Wrapper.m_PlayerActionMap_Cancel;
         public InputAction @Start => m_Wrapper.m_PlayerActionMap_Start;
+        public InputAction @ControlsUIMenu => m_Wrapper.m_PlayerActionMap_ControlsUIMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -290,6 +313,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Start.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStart;
                 @Start.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStart;
                 @Start.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnStart;
+                @ControlsUIMenu.started -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnControlsUIMenu;
+                @ControlsUIMenu.performed -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnControlsUIMenu;
+                @ControlsUIMenu.canceled -= m_Wrapper.m_PlayerActionMapActionsCallbackInterface.OnControlsUIMenu;
             }
             m_Wrapper.m_PlayerActionMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -315,6 +341,9 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
                 @Start.started += instance.OnStart;
                 @Start.performed += instance.OnStart;
                 @Start.canceled += instance.OnStart;
+                @ControlsUIMenu.started += instance.OnControlsUIMenu;
+                @ControlsUIMenu.performed += instance.OnControlsUIMenu;
+                @ControlsUIMenu.canceled += instance.OnControlsUIMenu;
             }
         }
     }
@@ -328,5 +357,6 @@ public partial class @PlayerActions : IInputActionCollection2, IDisposable
         void OnSelection(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+        void OnControlsUIMenu(InputAction.CallbackContext context);
     }
 }

@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 7979424168237073976}
   - component: {fileID: 7979424168237073977}
   m_Layer: 0
-  m_Name: Player1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -277,6 +277,7 @@ MonoBehaviour:
   rb2d: {fileID: 7979424168237073973}
   BulletPrefab: {fileID: 4546657812654062176, guid: fd98712a1d77ad74b8131d1f62660382, type: 3}
   playerFront: {fileID: 6210324220563893810}
+  Player: {fileID: 7979424168237073975}
 --- !u!114 &7979424168237073976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +367,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 64f9313c-9b1a-4580-9ef1-7577e30d674e
     m_ActionName: PlayerActionMap/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cc42b9ae-9102-47a5-bda6-2fe034a442a7
+    m_ActionName: PlayerActionMap/Selection[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 844becb8-2df9-4a52-acf7-a3986841e830
+    m_ActionName: PlayerActionMap/Cancel[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d478dbbc-82bb-4a90-bba9-0e55682cea97
+    m_ActionName: PlayerActionMap/Start[/XInputControllerWindows/start,/XInputControllerWindows1/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActionMap

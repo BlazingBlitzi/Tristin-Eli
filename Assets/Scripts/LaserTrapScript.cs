@@ -40,10 +40,14 @@ public class LaserTrapScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.name == "Player1")
         {
-           
-            GCS.Damage(100);
+            GCS.p1Damage(100);
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.name == "Player(Clone)")
+        {
+            GCS.p2Damage(100);
             Destroy(gameObject);
         }
     }

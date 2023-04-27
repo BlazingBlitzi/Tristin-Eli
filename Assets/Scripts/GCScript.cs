@@ -10,34 +10,63 @@ using System.Security.Cryptography;
 public class GCScript : MonoBehaviour
 {
     public TMP_Text healthText1;
-    public Image healthMeter;
+    public Image healthMeter1;
 
     public Image healthMeter2;
     public TMP_Text healthText2;
 
-    
+    public Image ButtonUI;
 
-    float health;
-    float maximumHealth = 100;
+    //public Image[] bulletImages;
+    //public Image[] bulletImages2;
+    //PlayerScript pS1;
+    //PlayerScript pS2;
+
+    private GameObject Player;
+    private GameObject Player2;
+
+    float p1health;
+    float p1maximumHealth = 100;
+    float p2health;
+    float p2maximumHealth = 100;
     float lerpSpeed;
 
     private void Start()
     {
+        Player = GameObject.Find("Player1");
+        Player2 = GameObject.Find("Player(Clone)");
+        //pS1 = Player.GetComponent<PlayerScript>();
+        //pS2 = Player.GetComponent<PlayerScript>();
+
         lerpSpeed = (3f * Time.deltaTime);
-        health = maximumHealth;
+        p1health = p1maximumHealth;
+        p2health= p2maximumHealth;
+
     }
+    
     private void Update()
     {
-        healthText1.text = "Health: " + health + "%";
+        healthText1.text = "Health: " + p1health + "%";
+        healthText2.text = "Health: " + p2health + "%";
+
+        
 
         HealthMeterLevel();
         ColorChanger();
 
-        if (health >= maximumHealth)
+        if (p1health >= p1maximumHealth)
         {
-            health = maximumHealth;
+            p1health = p1maximumHealth;
         }
-        if (health <= 0)
+        if (p2health >= p2maximumHealth)
+        { 
+            p2health = p2maximumHealth;
+        }
+        if (p1health <= 0)
+        {
+
+        }
+        if (p2health <= 0 )
         {
 
         }
@@ -50,7 +79,8 @@ public class GCScript : MonoBehaviour
     /// </summary>
     void HealthMeterLevel()
     {
-        healthMeter.fillAmount = Mathf.Lerp(healthMeter.fillAmount, health/maximumHealth, lerpSpeed);
+        healthMeter1.fillAmount = Mathf.Lerp(healthMeter1.fillAmount, p1health/p1maximumHealth, lerpSpeed);
+        healthMeter2.fillAmount = Mathf.Lerp(healthMeter2.fillAmount, p2health/p2maximumHealth, lerpSpeed);
     }
     /// <summary>
     /// Lerp is here too. This will just go from color A to color B at rate C 
@@ -58,22 +88,24 @@ public class GCScript : MonoBehaviour
     /// </summary>
     void ColorChanger()
     {
-        Color healthMeterColor = Color.Lerp(Color.red, Color.green, (health / maximumHealth));
-        healthMeter.color = healthMeterColor;
+        Color healthMeterColor1 = Color.Lerp(Color.red, Color.green, (p1health / p1maximumHealth));
+        Color healthMeterColor2 = Color.Lerp(Color.red, Color.green, (p2health / p2maximumHealth));
+        healthMeter1.color = healthMeterColor1;
+        healthMeter2.color = healthMeterColor2;
     }
 
-    public void Damage(float damageAmount)
+    public void p1Damage(float damageAmount)
     {
-        if (health > 0)
+        if (p1health > 0)
         {
-            health -= damageAmount;
+            p1health -= damageAmount;
         }
     }
-    public void Heal(float healAmount)
+    public void p2Damage(float damageAmount)
     {
-        if (health < maximumHealth)
-        {
-            health += healAmount;
+        if (p2health > 0) 
+        { 
+            p2health -= damageAmount;
         }
     }
 }

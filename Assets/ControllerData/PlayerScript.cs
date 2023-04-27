@@ -5,10 +5,12 @@
 // Brief Description : This script governs everything about player1, mainly
 // controller inputs and player actions.
 *****************************************************************************/
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField]
     private float airPuff;
-    private float ammoCount = 8;
+    public float ammoCount = 8;
     private float ROF = 0;
 
     public Vector2 lookDirection;
@@ -28,15 +30,26 @@ public class PlayerScript : MonoBehaviour
     public GameObject BulletPrefab;
     public Transform playerFront;
 
+    private GameObject GC;
+    private GCScript GCS;
+
+    //public GameObject Player;
 
     /// <summary>
     /// On script awake, it will get its own rigidbody
     /// </summary>
     private void Awake()
     {
+        if ((GameObject.Find("Player(Clone)") != null) && GameObject.Find("Player1") == null) 
+        {
+            gameObject.name = "Player1";
+        }
+
         rb2d = GetComponent<Rigidbody2D>();
         ammoCount = 8f;
-        
+
+        GC = GameObject.FindGameObjectWithTag("GameController");
+        GCS = GC.GetComponent<GCScript>();
     }
     private void FixedUpdate()
     {
@@ -104,5 +117,17 @@ public class PlayerScript : MonoBehaviour
     public void UseAirPuff(InputAction.CallbackContext ctx)
     {
         rb2d.AddForce(lastLookDirection * airPuff, ForceMode2D.Impulse);
+    }
+    public void ControlsUI(InputAction.CallbackContext ctx)
+    {
+        print("Shit");
+        if (GCS.ButtonUI.enabled == true)
+        {
+            GCS.ButtonUI.enabled= false;
+        }
+        if (GCS.ButtonUI.enabled == false)
+        {
+            GCS.ButtonUI.enabled= true;
+        }
     }
 }
