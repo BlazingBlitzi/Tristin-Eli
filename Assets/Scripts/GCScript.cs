@@ -15,14 +15,17 @@ public class GCScript : MonoBehaviour
     public Image healthMeter2;
     public TMP_Text healthText2;
 
+    public TMP_Text ammoCounterP1;
+    public TMP_Text ammoCounterP2;
+
     public Image ButtonUI;
 
     //public Image[] bulletImages;
     //public Image[] bulletImages2;
-    //PlayerScript pS1;
-    //PlayerScript pS2;
+    PlayerScript pS1;
+    PlayerScript pS2;
 
-    private GameObject Player;
+    private GameObject Player1;
     private GameObject Player2;
 
     float p1health;
@@ -33,26 +36,55 @@ public class GCScript : MonoBehaviour
 
     private void Start()
     {
-        Player = GameObject.Find("Player1");
-        Player2 = GameObject.Find("Player(Clone)");
-        //pS1 = Player.GetComponent<PlayerScript>();
-        //pS2 = Player.GetComponent<PlayerScript>();
-
         lerpSpeed = (3f * Time.deltaTime);
         p1health = p1maximumHealth;
         p2health= p2maximumHealth;
+
+
 
     }
     
     private void Update()
     {
+        if (GameObject.Find("Player1") != null)
+        {
+            Player1 = GameObject.Find("Player1");
+            pS1 = Player1.GetComponent<PlayerScript>();
+
+            ammoCounterP1.text = "Ammo: " + pS1.ammoCount;
+            if (pS1.ammoCount <= 0)
+            {
+                ammoCounterP1.text = "Reloading!";
+            }
+        }
+
+        if (GameObject.Find("Player(Clone)") != null)
+        {
+            Player2 = GameObject.Find("Player(Clone)");
+            pS2 = Player2.GetComponent<PlayerScript>();
+
+            ammoCounterP2.text = "Ammo: " + pS1.ammoCount;
+            if (pS2.ammoCount <= 0)
+            {
+                ammoCounterP2.text = "Reloading!";
+            }
+        }
+
+
         healthText1.text = "Health: " + p1health + "%";
         healthText2.text = "Health: " + p2health + "%";
 
-        
+
+
+
+
+
 
         HealthMeterLevel();
         ColorChanger();
+
+
+
 
         if (p1health >= p1maximumHealth)
         {
@@ -93,7 +125,6 @@ public class GCScript : MonoBehaviour
         healthMeter1.color = healthMeterColor1;
         healthMeter2.color = healthMeterColor2;
     }
-
     public void p1Damage(float damageAmount)
     {
         if (p1health > 0)
