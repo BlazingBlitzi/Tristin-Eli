@@ -4702,7 +4702,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &916126539
@@ -14474,11 +14474,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3166231786948825944, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.39
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3166231786948825944, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.95
+      value: -4.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850177479943531007, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850177479943531007, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.98
       objectReference: {fileID: 0}
     - target: {fileID: 7690991222788773074, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
       propertyPath: m_Name
@@ -14530,11 +14538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8741075369481230607, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 8741075369481230607, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.07
+      value: 7.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38778a5361b002c428e0068ab0daee4e, type: 3}
