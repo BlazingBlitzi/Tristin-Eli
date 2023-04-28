@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977635670968839998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.3, y: -0.6, z: 0.028983356}
+  m_LocalPosition: {x: -1.06, y: -6.33, z: 0.028983356}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: -840260105
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7376fcd584fdcc943949ef2014b2f0b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e632b0605f6824459ef9a295945ffb3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,18 +132,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.123989105, y: 0.08265972}
+  m_Offset: {x: -0.9805229, y: 0.5654316}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.42, y: 10.24}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 8.42, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.8575363, y: 7.5948734}
+  m_Size: {x: 7.570604, y: 7.439142}
   m_EdgeRadius: 0
 --- !u!114 &8203480785379902317
 MonoBehaviour:
@@ -160,7 +160,7 @@ MonoBehaviour:
   rb2d: {fileID: 5074256110858023578}
   BulletSpawn: {fileID: 3114554604501994682}
   EnemyLaser: {fileID: 8004448348790595440, guid: 174af7c8f5c00034ab5bf67c2de3196a, type: 3}
-  EnemyFront: {fileID: 0}
+  cooldownTimer: 5
 --- !u!50 &5074256110858023578
 Rigidbody2D:
   serializedVersion: 4
