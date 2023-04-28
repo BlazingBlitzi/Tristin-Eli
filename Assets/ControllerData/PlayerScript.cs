@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -33,6 +34,10 @@ public class PlayerScript : MonoBehaviour
     private GameObject GC;
     private GCScript GCS;
 
+    private InputActionAsset inputAsset;
+    private InputActionMap inputMap;
+    private InputAction controlUI; 
+
     //public GameObject Player;
 
     /// <summary>
@@ -50,6 +55,12 @@ public class PlayerScript : MonoBehaviour
 
         GC = GameObject.FindGameObjectWithTag("GameController");
         GCS = GC.GetComponent<GCScript>();
+
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        inputMap = inputAsset.FindActionMap("PlayerActionMap");
+        controlUI = inputMap.FindAction("ControlsUIMenu");
+
+        controlUI.performed += ctx => ControlsUIMenu(ctx);
     }
     private void FixedUpdate()
     {
@@ -118,16 +129,10 @@ public class PlayerScript : MonoBehaviour
     {
         rb2d.AddForce(lastLookDirection * airPuff, ForceMode2D.Impulse);
     }
-    public void ControlsUI(InputAction.CallbackContext ctx)
+    public void ControlsUIMenu(InputAction.CallbackContext ctx)
     {
-        print("Shit");
-        if (GCS.ButtonUI.enabled == true)
-        {
-            GCS.ButtonUI.enabled= false;
-        }
-        if (GCS.ButtonUI.enabled == false)
-        {
-            GCS.ButtonUI.enabled= true;
-        }
+
+        
+        GCS.ButtonUI.SetActive(true);
     }
 }

@@ -18,7 +18,8 @@ public class GCScript : MonoBehaviour
     public TMP_Text ammoCounterP1;
     public TMP_Text ammoCounterP2;
 
-    public Image ButtonUI;
+    public GameObject ButtonUI;
+
 
     //public Image[] bulletImages;
     //public Image[] bulletImages2;
@@ -63,7 +64,7 @@ public class GCScript : MonoBehaviour
             Player2 = GameObject.Find("Player(Clone)");
             pS2 = Player2.GetComponent<PlayerScript>();
 
-            ammoCounterP2.text = "Ammo: " + pS1.ammoCount;
+            ammoCounterP2.text = "Ammo: " + pS2.ammoCount;
             if (pS2.ammoCount <= 0)
             {
                 ammoCounterP2.text = "Reloading!";
