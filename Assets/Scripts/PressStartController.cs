@@ -27,10 +27,10 @@ public class PressStartController : MonoBehaviour
 
     private void Update()
     {
-        //if (start.performed)
-        //{
-           // GetComponent.gameObject("PressStart") = 
-       // }
+        if (start.performed)
+        {
+            GetComponent.gameObject("PressStart") = 
+        }
     }
     private void OnEnable()
     {
