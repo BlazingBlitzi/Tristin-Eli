@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.VisualScripting;
 using System;
@@ -97,11 +98,11 @@ public class GCScript : MonoBehaviour
         }
         if (p1health <= 0)
         {
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (p2health <= 0 )
         {
-
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     /// <summary>

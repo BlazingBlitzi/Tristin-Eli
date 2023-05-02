@@ -31,12 +31,12 @@ public class EnemyLaserBehavior : MonoBehaviour
     {
         if (collision.gameObject.name == "Player1")
         {
-            GCS.p1Damage(100);
+            GCS.p1Damage(10);
             Destroy(gameObject);
         }
         if (collision.gameObject.name == "Player(Clone)")
         {
-            GCS.p2Damage(100);
+            GCS.p2Damage(10);
             Destroy(gameObject);
         }
         else

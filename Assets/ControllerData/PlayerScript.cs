@@ -36,7 +36,12 @@ public class PlayerScript : MonoBehaviour
 
     private InputActionAsset inputAsset;
     private InputActionMap inputMap;
-    private InputAction controlUI; 
+    private InputAction controlUI;
+
+    public AudioSource gunShotSource;
+    
+    
+    
 
     //public GameObject Player;
 
@@ -49,6 +54,9 @@ public class PlayerScript : MonoBehaviour
         {
             gameObject.name = "Player1";
         }
+
+        gunShotSource = GetComponent<AudioSource>();
+        
 
         rb2d = GetComponent<Rigidbody2D>();
         ammoCount = 8f;
@@ -77,6 +85,7 @@ public class PlayerScript : MonoBehaviour
         {
             GameObject newBullet = Instantiate(BulletPrefab, playerFront.position, Quaternion.identity);
             newBullet.GetComponent<LaserBlastController>().Shoot(lastLookDirection);
+            gunShotSource.Play();
             ROF = Time.time;
             --ammoCount;
         }
@@ -127,6 +136,7 @@ public class PlayerScript : MonoBehaviour
 
     public void UseAirPuff(InputAction.CallbackContext ctx)
     {
+        
         rb2d.AddForce(lastLookDirection * airPuff, ForceMode2D.Impulse);
     }
     public void ControlsUIMenu(InputAction.CallbackContext ctx)
