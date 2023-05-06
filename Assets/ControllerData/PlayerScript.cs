@@ -124,7 +124,7 @@ public class PlayerScript : MonoBehaviour
         lookDirection = ctx.ReadValue<Vector2>();
         if (lookDirection != Vector2.zero)
         {
-            lastLookDirection= lookDirection;
+            lastLookDirection = lookDirection;
             float angle = Mathf.Atan2(lastLookDirection.y, lastLookDirection.x) * Mathf.Rad2Deg;
             Child.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
@@ -142,15 +142,17 @@ public class PlayerScript : MonoBehaviour
     }
     public void ControlsUIMenu(InputAction.CallbackContext ctx)
     {
-
-        if (GCS.ButtonUI.activeSelf)
+        if (GCS.ButtonUI != null)
         {
-            GCS.ButtonUI.SetActive(false);
+            GCS.ButtonUI.SetActive(!GCS.ButtonUI.activeInHierarchy);
         }
-        if (!GCS.ButtonUI.activeSelf)
+        if (GCS.ButtonUI.activeInHierarchy)
         {
-            GCS.ButtonUI.SetActive(true);
+            Time.timeScale= 0.0f;
         }
-        
+        else
+        {
+            Time.timeScale= 1.0f;
+        }
     }
 }
