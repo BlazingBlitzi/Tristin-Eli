@@ -62,25 +62,23 @@ public class GCScript : MonoBehaviour
 
         if (GameObject.Find("Player(Clone)") != null)
         {
+            if (GameObject.Find("Player1") == null)
+            {
+                Player2.name = "Player1";
+            }
             Player2 = GameObject.Find("Player(Clone)");
             pS2 = Player2.GetComponent<PlayerScript>();
-
             ammoCounterP2.text = "Ammo: " + pS2.ammoCount;
             if (pS2.ammoCount <= 0)
             {
                 ammoCounterP2.text = "Reloading!";
             }
+
         }
 
 
         healthText1.text = "Health: " + p1health + "%";
         healthText2.text = "Health: " + p2health + "%";
-
-
-
-
-
-
 
         HealthMeterLevel();
         ColorChanger();

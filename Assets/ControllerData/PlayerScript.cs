@@ -69,6 +69,7 @@ public class PlayerScript : MonoBehaviour
         controlUI = inputMap.FindAction("ControlsUIMenu");
 
         controlUI.performed += ctx => ControlsUIMenu(ctx);
+        controlUI.canceled += ctx => ControlsUIMenu(ctx);
     }
     private void FixedUpdate()
     {
@@ -142,7 +143,14 @@ public class PlayerScript : MonoBehaviour
     public void ControlsUIMenu(InputAction.CallbackContext ctx)
     {
 
+        if (GCS.ButtonUI.activeSelf)
+        {
+            GCS.ButtonUI.SetActive(false);
+        }
+        if (!GCS.ButtonUI.activeSelf)
+        {
+            GCS.ButtonUI.SetActive(true);
+        }
         
-        GCS.ButtonUI.SetActive(true);
     }
 }
