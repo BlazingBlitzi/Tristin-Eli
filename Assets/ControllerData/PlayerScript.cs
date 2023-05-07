@@ -23,6 +23,7 @@ public class PlayerScript : MonoBehaviour
     private float airPuff;
     public float ammoCount = 8;
     private float ROF = 0;
+    private bool reloading = false;
 
     public Vector2 lookDirection;
     public Vector2 lastLookDirection;
@@ -90,9 +91,10 @@ public class PlayerScript : MonoBehaviour
             ROF = Time.time;
             --ammoCount;
         }
-        else if (ammoCount <= 0f)
+        else if (ammoCount <= 0f && reloading != true)
         {
             ReloadingGun();
+            reloading = true;
         }
     }
     /// <summary>
@@ -102,7 +104,6 @@ public class PlayerScript : MonoBehaviour
     public void ReloadingGun()
     {
         StartCoroutine(Reload());
-        print("RELOADING");
     }
     /// <summary>
     /// Afrer 3 seconds, the ammocount is restored to 8.
@@ -111,6 +112,8 @@ public class PlayerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         ammoCount = 8f;
+        reloading = false;
+
     }
     /// <summary>
     /// This is the movement section. First, it gets a vector2 from the

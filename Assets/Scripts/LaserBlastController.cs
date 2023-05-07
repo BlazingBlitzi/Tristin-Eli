@@ -24,6 +24,10 @@ public class LaserBlastController : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Shoot(Vector2 dir)

@@ -14,23 +14,32 @@ using UnityEngine;
 public class PanelScript : MonoBehaviour
 {
     private bool doorOpen = false;
+    private SpriteRenderer spr;
     public GameObject Door;
 
     /// <summary>
     /// If the bullet hits whatever this script is on, it will take the door
     /// gameObject on the script and disable it and vice versa. 
     /// </summary>
+    public void Start()
+    {
+        spr = GetComponent<SpriteRenderer>();
+        spr.color = Color.red;
+
+    }
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet" && doorOpen == false)
         {
-            Door.SetActive(true);
+            Door.SetActive(false);
             doorOpen= true;
+            spr.color = Color.green;
         }
         else
         {
-            Door.SetActive(false);
+            Door.SetActive(true);
             doorOpen = false;
+            spr.color = Color.red;
         }
     }
 }
