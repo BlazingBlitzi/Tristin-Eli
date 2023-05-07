@@ -46,12 +46,17 @@ public class FragileWall : MonoBehaviour
             Suck();
 
         }
-        if (collision.gameObject.tag == "Player" && collision.relativeVelocity.magnitude >= 1)
+        if (collision.gameObject.name == "Player(Clone)" && collision.relativeVelocity.magnitude >= 1)
         {
-            GCS.p1Damage (10f);
+            GCS.p2Damage (10f);
             WallHealth -= (2f * collision.relativeVelocity.magnitude);
         }
-        
+        if (collision.gameObject.name == "Player1" && collision.relativeVelocity.magnitude >= 1)
+        {
+            GCS.p1Damage(10f);
+            WallHealth -= (2f * collision.relativeVelocity.magnitude);
+        }
+
     }
     /// <summary>
     /// This f(x) is to start the space vacuum coroutine. Not much else. 
