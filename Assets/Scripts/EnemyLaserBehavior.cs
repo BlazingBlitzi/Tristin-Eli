@@ -1,3 +1,10 @@
+/*****************************************************************************
+// File Name :         EnemyLaserBehavior
+// Author :            Elijah Vroman
+// Creation Date :     4/15/23
+// Brief Description : This script is brief, but important. Here the bullet 
+itself will find the player and move towards it at a given speed.
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +15,13 @@ public class EnemyLaserBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject GC;
     private GCScript GCS;
-    // Start is called before the first frame update
+
+
+    /// <summary>
+    /// The bullet does several things in start. It finds the GC script, as 
+    /// well as the nearest player. Using its own as well as the players'
+    /// positions, it finds a vector to move towards the player.
+    /// </summary>
     void Start()
     {
         GC = GameObject.FindGameObjectWithTag("GameController");
@@ -27,6 +40,13 @@ public class EnemyLaserBehavior : MonoBehaviour
 
         Destroy(gameObject, 3f);
     }
+
+
+    /// <summary>
+    /// Here the bullet is checking what it hit. In order that the game doesnt
+    /// have a bunch of bullets floating around after they are "fired," they
+    /// are automatically destroyed when hitting anything.
+    /// </summary>
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Player1")

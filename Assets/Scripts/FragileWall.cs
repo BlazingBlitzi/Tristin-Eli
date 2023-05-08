@@ -12,9 +12,9 @@ using UnityEngine;
 public class FragileWall : MonoBehaviour
 {
     public float WallHealth = 10f;
-    private GameObject PlayerPos;
+    private GameObject playerPos;
     private bool vacuum;
-    PlayerScript pS;
+    public PlayerScript PS;
     private GameObject GC;
     private GCScript GCS;
     private Collider2D col;
@@ -29,6 +29,12 @@ public class FragileWall : MonoBehaviour
         GC = GameObject.FindGameObjectWithTag("GameController");
         GCS = GC.GetComponent<GCScript>();
     }
+
+    /// <summary>
+    /// This section determines after how much damage the wall will break, and 
+    /// what will damage it. (Finding tags of players and their speed)
+    /// </summary>
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -44,7 +50,6 @@ public class FragileWall : MonoBehaviour
             spr.enabled = false;
 
             Suck();
-
         }
         if (collision.gameObject.name == "Player(Clone)" && collision.relativeVelocity.magnitude >= 1)
         {
@@ -68,18 +73,19 @@ public class FragileWall : MonoBehaviour
     }
     /// <summary>
     /// Here, we will be finding the player script and the player's position. 
-    /// difAngle just gets us a vector for addForce. 
+    /// difAngle just gets us a vector for addForce, in order to create the 
+    /// sucking movement.
     /// </summary>
     public void Update()
     {
         if (vacuum == true)
         {
-            PlayerPos = GameObject.FindGameObjectWithTag("Player");
-            pS = PlayerPos.GetComponent<PlayerScript>();
+            playerPos = GameObject.FindGameObjectWithTag("Player");
+            PS = playerPos.GetComponent<PlayerScript>();
 
 
-            Vector3 difAngle = (PlayerPos.transform.position - transform.position);
-            pS.rb2d.AddForce(difAngle.normalized * -8f * Time.deltaTime, ForceMode2D.Impulse);
+            Vector3 difAngle = (playerPos.transform.position - transform.position);
+            PS.rb2d.AddForce(difAngle.normalized * -8f * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
     /// <summary>

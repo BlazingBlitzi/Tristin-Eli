@@ -29,7 +29,10 @@ public class LaserBlastController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    /// <summary>
+    /// This finds where the player is looking to make the bullet fly in that
+    /// direction.
+    /// </summary>
     public void Shoot(Vector2 dir)
     {
         GetComponent<Rigidbody2D>().AddForce(dir * speed, ForceMode2D.Impulse);

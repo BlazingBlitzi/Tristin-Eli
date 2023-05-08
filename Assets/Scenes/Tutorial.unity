@@ -14922,13 +14922,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d832b5b936adc3f4fa6ead895be3ce8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText1: {fileID: 41964228}
-  healthMeter1: {fileID: 355097194}
-  healthMeter2: {fileID: 385882039}
-  healthText2: {fileID: 1551738706}
-  ammoCounterP1: {fileID: 407197473}
-  ammoCounterP2: {fileID: 1490189474}
+  HealthText1: {fileID: 41964228}
+  HealthMeter1: {fileID: 355097194}
+  HealthMeter2: {fileID: 385882039}
+  HealthText2: {fileID: 1551738706}
+  AmmoCounterP1: {fileID: 407197473}
+  AmmoCounterP2: {fileID: 1490189474}
   ButtonUI: {fileID: 1993625342}
+  P1health: 0
+  P1maximumHealth: 100
+  P2health: 0
+  P2maximumHealth: 100
+  LerpSpeed: 0
 --- !u!4 &2127869877
 Transform:
   m_ObjectHideFlags: 0

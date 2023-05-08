@@ -21740,6 +21740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallHealth: 10
+  PS: {fileID: 0}
 --- !u!61 &1035390320
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22443,6 +22444,10 @@ PrefabInstance:
     - target: {fileID: 2580875511306769380, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
       propertyPath: m_Name
       value: Enemy2 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580875511306769380, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7673691622662388687, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
       propertyPath: m_RootOrder
@@ -23961,6 +23966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallHealth: 10
+  PS: {fileID: 0}
 --- !u!61 &1650575668
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24349,13 +24355,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d832b5b936adc3f4fa6ead895be3ce8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText1: {fileID: 118434894}
-  healthMeter1: {fileID: 1571794340}
-  healthMeter2: {fileID: 62597165}
-  healthText2: {fileID: 2136084704}
-  ammoCounterP1: {fileID: 382376923}
-  ammoCounterP2: {fileID: 1361094905}
+  HealthText1: {fileID: 118434894}
+  HealthMeter1: {fileID: 1571794340}
+  HealthMeter2: {fileID: 62597165}
+  HealthText2: {fileID: 2136084704}
+  AmmoCounterP1: {fileID: 382376923}
+  AmmoCounterP2: {fileID: 1361094905}
   ButtonUI: {fileID: 1229432333}
+  P1health: 0
+  P1maximumHealth: 100
+  P2health: 0
+  P2maximumHealth: 100
+  LerpSpeed: 0
 --- !u!4 &1799057996
 Transform:
   m_ObjectHideFlags: 0
@@ -24638,6 +24649,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy2 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2580875511306769380, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7673691622662388687, guid: 3ad33f499f2ed40428269ce2c4dc15f9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -24835,6 +24850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallHealth: 10
+  PS: {fileID: 0}
 --- !u!61 &1983036363
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,3 +1,11 @@
+/*****************************************************************************
+// File Name :         Fragile Wall
+// Author :            Elijah Vroman
+// Creation Date :     4/12/23
+// Brief Description : This is the Game Controller, which was mostly created 
+to keep track of UI elements and health.It possesses functions that other 
+scripts will be calling to change those elements.
+*****************************************************************************/
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -10,95 +18,95 @@ using System.Security.Cryptography;
 
 public class GCScript : MonoBehaviour
 {
-    public TMP_Text healthText1;
-    public Image healthMeter1;
+    public TMP_Text HealthText1;
+    public Image HealthMeter1;
 
-    public Image healthMeter2;
-    public TMP_Text healthText2;
+    public Image HealthMeter2;
+    public TMP_Text HealthText2;
 
-    public TMP_Text ammoCounterP1;
-    public TMP_Text ammoCounterP2;
+    public TMP_Text AmmoCounterP1;
+    public TMP_Text AmmoCounterP2;
 
     public GameObject ButtonUI;
 
 
     //public Image[] bulletImages;
     //public Image[] bulletImages2;
-    PlayerScript pS1;
-    PlayerScript pS2;
+    PlayerScript PS1;
+    PlayerScript PS2;
 
-    private GameObject Player1;
-    private GameObject Player2;
+    private GameObject player1;
+    private GameObject player2;
 
-    float p1health;
-    float p1maximumHealth = 100;
-    float p2health;
-    float p2maximumHealth = 100;
-    float lerpSpeed;
+    public float P1health;
+    public float P1maximumHealth = 100;
+    public float P2health;
+    public float P2maximumHealth = 100;
+    public float LerpSpeed;
 
-    private void Start()
+    void Start()
     {
-        lerpSpeed = (3f * Time.deltaTime);
-        p1health = p1maximumHealth;
-        p2health= p2maximumHealth;
-
-
-
+        LerpSpeed = (3f * Time.deltaTime);
+        P1health = P1maximumHealth;
+        P2health= P2maximumHealth;
     }
     
+    /// <summary>
+    /// Firstly, Update is constantly finding the player to check how much ammo
+    /// needs to be displayed. Similarly, the health is also being found AND 
+    /// updated, and of course if health is 0 the scene will reload. Both 
+    /// ColorChanger and HealthMeter functions are constantly called so the UI
+    /// can always be up to date.
+    /// </summary>
     private void Update()
     {
         if (GameObject.Find("Player1") != null)
         {
-            Player1 = GameObject.Find("Player1");
-            pS1 = Player1.GetComponent<PlayerScript>();
+            player1 = GameObject.Find("Player1");
+            PS1 = player1.GetComponent<PlayerScript>();
 
-            ammoCounterP1.text = "Ammo: " + pS1.ammoCount;
-            if (pS1.ammoCount <= 0)
+            AmmoCounterP1.text = "Ammo: " + PS1.ammoCount;
+            if (PS1.ammoCount <= 0)
             {
-                ammoCounterP1.text = "Reloading!";
+                AmmoCounterP1.text = "Reloading!";
             }
         }
-
         if (GameObject.Find("Player(Clone)") != null)
         {
             if (GameObject.Find("Player1") == null)
             {
-                Player2.name = "Player1";
+                player2.name = "Player1";
             }
-            Player2 = GameObject.Find("Player(Clone)");
-            pS2 = Player2.GetComponent<PlayerScript>();
-            ammoCounterP2.text = "Ammo: " + pS2.ammoCount;
-            if (pS2.ammoCount <= 0)
+            player2 = GameObject.Find("Player(Clone)");
+            PS2 = player2.GetComponent<PlayerScript>();
+            AmmoCounterP2.text = "Ammo: " + PS2.ammoCount;
+            if (PS2.ammoCount <= 0)
             {
-                ammoCounterP2.text = "Reloading!";
+                AmmoCounterP2.text = "Reloading!";
             }
 
         }
 
-
-        healthText1.text = "Health: " + p1health + "%";
-        healthText2.text = "Health: " + p2health + "%";
+        HealthText1.text = "Health: " + P1health + "%";
+        HealthText2.text = "Health: " + P2health + "%";
 
         HealthMeterLevel();
         ColorChanger();
 
 
-
-
-        if (p1health >= p1maximumHealth)
+        if (P1health >= P1maximumHealth)
         {
-            p1health = p1maximumHealth;
+            P1health = P1maximumHealth;
         }
-        if (p2health >= p2maximumHealth)
+        if (P2health >= P2maximumHealth)
         { 
-            p2health = p2maximumHealth;
+            P2health = P2maximumHealth;
         }
-        if (p1health <= 0)
+        if (P1health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        if (p2health <= 0 )
+        if (P2health <= 0 )
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -111,8 +119,8 @@ public class GCScript : MonoBehaviour
     /// </summary>
     void HealthMeterLevel()
     {
-        healthMeter1.fillAmount = Mathf.Lerp(healthMeter1.fillAmount, p1health/p1maximumHealth, lerpSpeed);
-        healthMeter2.fillAmount = Mathf.Lerp(healthMeter2.fillAmount, p2health/p2maximumHealth, lerpSpeed);
+        HealthMeter1.fillAmount = Mathf.Lerp(HealthMeter1.fillAmount, P1health/P1maximumHealth, LerpSpeed);
+        HealthMeter2.fillAmount = Mathf.Lerp(HealthMeter2.fillAmount, P2health/P2maximumHealth, LerpSpeed);
     }
     /// <summary>
     /// Lerp is here too. This will just go from color A to color B at rate C 
@@ -120,23 +128,23 @@ public class GCScript : MonoBehaviour
     /// </summary>
     void ColorChanger()
     {
-        Color healthMeterColor1 = Color.Lerp(Color.red, Color.green, (p1health / p1maximumHealth));
-        Color healthMeterColor2 = Color.Lerp(Color.red, Color.green, (p2health / p2maximumHealth));
-        healthMeter1.color = healthMeterColor1;
-        healthMeter2.color = healthMeterColor2;
+        Color healthMeterColor1 = Color.Lerp(Color.red, Color.green, (P1health / P1maximumHealth));
+        Color healthMeterColor2 = Color.Lerp(Color.red, Color.green, (P2health / P2maximumHealth));
+        HealthMeter1.color = healthMeterColor1;
+        HealthMeter2.color = healthMeterColor2;
     }
     public void p1Damage(float damageAmount)
     {
-        if (p1health > 0)
+        if (P1health > 0)
         {
-            p1health -= damageAmount;
+            P1health -= damageAmount;
         }
     }
     public void p2Damage(float damageAmount)
     {
-        if (p2health > 0) 
+        if (P2health > 0) 
         { 
-            p2health -= damageAmount;
+            P2health -= damageAmount;
         }
     }
 }
